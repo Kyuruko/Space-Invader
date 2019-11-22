@@ -40,11 +40,13 @@ class Game:
         self.player.update(keys)
 
         for bullet in self.bullets:
+            if not bullet.update(keys):
+                self.bullets.remove(bullet)
+                return
             if self.collision_bullet(bullet):
                 self.enemy = Enemy()
-                print("hit")
-            if not bullet.update(keys) or self.collision_bullet(bullet):
                 self.bullets.remove(bullet)
+            
 
 
         if self.enemy:
