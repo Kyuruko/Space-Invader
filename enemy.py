@@ -9,8 +9,10 @@ class Enemy:
         self.velocidade = 0.2
         self.direcao = 1
 
-    def update(self):
-        self.X = self.X + self.direcao * self.velocidade
-        if self.X > 736 or self.X < 0:
+        e_IMG = pygame.image.load('imgs/enemy.png')
+
+    def update(self, keys):
+        self.e_X = self.e_X + self.direcao * self.velocidade
+        if self.e_X > 736 or self.e_X < 0:
             self.direcao =  self.direcao * -1
-            self.Y = self.Y + 64 + 4
+            self.e_Y = self.e_Y + 64 + 4

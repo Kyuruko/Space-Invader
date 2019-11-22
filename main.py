@@ -1,4 +1,6 @@
 import pygame
+from title import Title
+from game import Game
 import os
 #colors
 
@@ -18,7 +20,7 @@ size = 800,600
 screen = pygame.display.set_mode(size)
 pygame.display.set_caption("Space Invader")
 icon = pygame.image.load('imgs/ufo.png')
-background = pygame.image.load('imgs/game-bg.png')
+bg = pygame.image.load('imgs/game-bg.png')
 pygame.display.set_icon(icon)
 
 

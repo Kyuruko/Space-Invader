@@ -3,19 +3,21 @@ import os
 
 
 class Player:
-    def __init__(self, X = 370, Y = 480):
-        self.p_X = X
-        self.p_Y = Y
+    def __init__(self):
+        self.p_X = 370
+        self.p_Y = 480
 
         self.velocidade = 0.4
 
+        p_IMG = pygame.image.load('imgs/nave.png')
+
     def update(self, keys):
         if keys[pygame.K_LEFT]:
-            self.X += -self.velocidade
+            self.p_X += -self.velocidade
         if keys[pygame.K_RIGHT]:
-            self.X += self.velocidade
+            self.p_X += self.velocidade
 
-        if self.X <= 0:
-            self.X = 0
-        elif self.X >= 736:
-            self.X = 736
+        if self.p_X <= 0:
+            self.p_X = 0
+        elif self.p_X >= 736:
+            self.p_X = 736

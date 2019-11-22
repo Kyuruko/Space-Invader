@@ -9,9 +9,6 @@ class Bullet:
         self.sprite = pygame.image.load('imgs/laser2.png')
         self.W, self.H = self.sprite.get_size()
 
-        bullet_cd_timer = 0
-        bullet_cd_time = 120
-
         self.velocity = -2
 
         bullets = []
