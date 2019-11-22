@@ -3,8 +3,8 @@ import random
 
 class Enemy:
     def __init__(self, X=0, Y=0):
-        self.e_X = X
-        self.e_Y = Y
+        self.e_X = random.randint(0,400)
+        self.e_Y = random.randint(50,150)
 
         self.velocidade = 2
         self.direcao = 1
