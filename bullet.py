@@ -2,16 +2,14 @@ import pygame
 
 
 class Bullet:
-    def _init_(self, X=0, Y=480):
+    def __init__(self, X=0, Y=480):
         self.b_X = X
         self.b_Y = Y
 
-        self.sprite = pygame.image.load('imgs/laser2.png')
-        self.W, self.H = self.sprite.get_size()
+        self.b_IMG = pygame.image.load('imgs/laser2.png')
+        self.W, self.H = self.b_IMG.get_size()
 
         self.velocity = -2
-
-        bullets = []
 
     def update(self, keys):
         # returns false if must be destroyed
@@ -21,4 +19,4 @@ class Bullet:
         return True
 
     def draw(self, screen):
-        screen.blit(self.sprite, (self.b_X, self.b_Y))
+        screen.blit(self.b_IMG, (self.b_X, self.b_Y))
