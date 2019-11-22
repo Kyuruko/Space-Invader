@@ -7,7 +7,7 @@ class Player:
         self.p_X = 370
         self.p_Y = 480
 
-        self.velocidade = 1
+        self.velocidade = 1.5
 
         self.p_IMG = pygame.image.load('imgs/nave.png')
 

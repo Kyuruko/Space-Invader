@@ -2,7 +2,7 @@ import pygame
 from player import Player
 from enemy import Enemy
 from bullet import Bullet
-
+from hud import HUD
 
 
 class Game:
@@ -16,6 +16,7 @@ class Game:
         # game objects
         self.player = Player()
         self.enemy = Enemy()
+        self.hud = HUD()
     def fire(self):
         if self.bullet_cd_timer <= 0:
             self.bullets.append(Bullet(self.player.p_X))
@@ -27,7 +28,7 @@ class Game:
         return False
 
     def collision_bullet(self, bullet):
-        if bullet.b_X < self.enemy.e_X + 64 and bullet.b_X + 64 > self.enemy.e_X and bullet.b_Y < self.enemy.e_Y + 64 and bullet.b_Y + 64 > self.enemy.e_Y:
+        if bullet.b_X < self.enemy.e_X + 48 and bullet.b_X + 48 > self.enemy.e_X and bullet.b_Y < self.enemy.e_Y + 64 and bullet.b_Y + 64 > self.enemy.e_Y:
             return True
         return False
 
@@ -46,13 +47,16 @@ class Game:
             if self.collision_bullet(bullet):
                 self.enemy = Enemy()
                 self.bullets.remove(bullet)
-            
-
+                self.hud.add_score()
+        if self.collision_pve():
+            return 'game-over'
+        self.hud.update(keys)
 
         if self.enemy:
             self.enemy.update(keys)
     def draw(self, screen):
         screen.blit(self.bg, (0, 0))
+        self.hud.draw(screen)
 
         for bullet in self.bullets:
             bullet.draw(screen)

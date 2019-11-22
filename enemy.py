@@ -6,7 +6,7 @@ class Enemy:
         self.e_X = X
         self.e_Y = Y
 
-        self.velocidade = 0.8
+        self.velocidade = 2
         self.direcao = 1
 
         self.e_IMG = pygame.image.load('imgs/enemy.png')

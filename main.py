@@ -1,21 +1,13 @@
 import pygame
 from title import Title
 from game import Game
+from game_over import Game_Over
+from cores import BLACK
 import os
-#colors
 
-RED = (150, 0, 0)
-LRED = (255, 0, 0)
-GREEN = (0, 150, 0)
-LGREEN = (0, 255, 0)
-BLUE = (0, 0, 150)
-LBLUE = (0, 0, 255)
-WHITE = (255, 255, 255)
-BLACK = (0, 0, 0)
-PURPLE = (150, 0, 150)
-LPURPLE = (255, 0, 255)
-COLORS = [RED, LRED, GREEN, LGREEN, BLUE, LBLUE, WHITE, PURPLE, LPURPLE]
-#display config
+
+pygame.init()
+#configuraçao da tela
 size = 800,600
 screen = pygame.display.set_mode(size)
 pygame.display.set_caption("Space Invader")
@@ -24,10 +16,11 @@ bg = pygame.image.load('imgs/game-bg.png')
 pygame.display.set_icon(icon)
 
 
-# scenes must be registered here before being used
+# cenas devem ser registradas aqui antes de serem usadas
 scenes = {
     'title': Title,
-    'game': Game
+    'game': Game,
+    'game-over': Game_Over
 }
 nextscene = "title"
 
@@ -40,9 +33,9 @@ while run:
             run = False
             break
 
-    # allows for multiple screens (main menu, game, highscore screen, etc)
+    # permite várias telas (main menu, game, highscore screen, etc)
     if nextscene:
-        # allow for any screen to quit the game
+        # permite qualquer tela fecho o jogo
         if nextscene == "exit":
             run = False
             break
@@ -50,17 +43,17 @@ while run:
         scene = scenes[nextscene]()
         nextscene = False
 
-    # keys pressed, allows for multiple keys to be pressed at the same time.
+    # pressionar tecla, permite várias teclas serem apertadas simultaneamente
     keys = pygame.key.get_pressed()
 
-    # updates screen and their objects positions and other magical stuff
+    # atualiza a img em cada frame
     nextscene = scene.update(keys)
 
-    # clear the screen
+    # limpa tela
     screen.fill(BLACK)
 
-    # draws screen
+    # desenha tela (cria a img)
     scene.draw(screen)
 
-    # update everything
+    # atualiza todos os frames
     pygame.display.update()
