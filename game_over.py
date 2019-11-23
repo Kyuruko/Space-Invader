@@ -4,7 +4,7 @@ class Game_Over:
     def __init__(self):
         self.bg = pygame.image.load('imgs/game-over.png').convert_alpha()
     def update(self, keys):
-        if keys[pygame.K_SPACE]:
+        if keys[pygame.K_r]:
             return "title"
     def draw(self,screen):
         screen.blit(self.bg, (0, 0))

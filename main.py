@@ -20,7 +20,8 @@ pygame.display.set_icon(icon)
 scenes = {
     'title': Title,
     'game': Game,
-    'game-over': Game_Over
+    'game-over': Game_Over,
+    'high-score': 
 }
 nextscene = "title"
 
@@ -28,14 +29,14 @@ run = True
 # game loop
 while run:
     for event in pygame.event.get():
-        # close the app if needed
+        # fecha a janela
         if event.type == pygame.QUIT:
             run = False
             break
 
     # permite várias telas (main menu, game, highscore screen, etc)
     if nextscene:
-        # permite qualquer tela fecho o jogo
+        # tela de quit do jogo
         if nextscene == "exit":
             run = False
             break

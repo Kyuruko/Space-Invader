@@ -9,7 +9,9 @@ class Bullet:
         self.b_IMG = pygame.image.load('imgs/laser2.png')
         self.W, self.H = self.b_IMG.get_size()
 
-        self.velocity = -8
+        self.velocity = -12
+
+        self.dano = 1
 
     def update(self, keys):
         # returns false if must be destroyed
