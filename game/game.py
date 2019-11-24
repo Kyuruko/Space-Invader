@@ -32,7 +32,7 @@ class Game:
             self.bullet_cd_timer = self.bullet_cd_time
 
     # funcao que faz a açao de atirar
-    def update(self, keys):
+    def update(self, keys,keypress):
         self.bullet_cd_timer -= 1
         if keys[pygame.K_SPACE]:
             self.bullet_sound.play()

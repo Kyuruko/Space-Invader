@@ -19,14 +19,14 @@ class Title:
         self.exit2 = pygame.image.load('imgs/menu-sair2.png')
         
         #delay para mudança de opçao do menu, se não o menu fica doido
-        self.timer=0
+        self.timer=10
         self.delay=5
         
-        self.selected = 0
+        self.selected = 4
         
         # o que deve ser chamado em cada posiçao
-        self.actions=["game","high-score","exit"]
-    def update(self,keys):
+        self.actions=["game","show-score","exit"]
+    def update(self,keys,keypress):
         if self.selected < 0: 
             self.selected = 2
         if self.selected > 2:
@@ -41,9 +41,9 @@ class Title:
            if keys[pygame.K_DOWN]:
                 self.selected+=1
                 self.timer = self.delay
-        
-        if keys[pygame.K_RETURN] or keys[pygame.K_SPACE]:
-            return self.actions[self.selected]
+ 
+           if keys[pygame.K_RETURN] or keys[pygame.K_SPACE]:
+               return self.actions[self.selected]
         
     def draw(self, screen):
         screen.blit(self.bg, (0, 0))
