@@ -43,7 +43,7 @@ class Game:
                 self.bullets.remove(bullet)
                 self.hud.add_score()
         # funçao que determina o fim de jogo
-        if self.enemy.collision_pve(self.player) and 0 >= self.player.vida:
+        if self.enemy.collision_pve(self.player):
             return 'game-over'
         self.hud.update(keys)
         if self.enemy:
