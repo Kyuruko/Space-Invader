@@ -5,6 +5,7 @@ from menu.game_over import Game_Over
 from menu.showscore import ShowScore
 from cores import BLACK
 import os
+pygame.mixer.init()
 
 
 pygame.init()
