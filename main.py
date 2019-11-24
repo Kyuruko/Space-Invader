@@ -38,6 +38,8 @@ while run:
             break
         elif event.type == pygame.KEYDOWN:
             keypress = event
+        elif event.type == pygame.KEYUP:
+            keypress = None
     pygame.event.clear()
 
     # permite várias telas (main menu, game, highscore screen, etc)

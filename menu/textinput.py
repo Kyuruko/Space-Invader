@@ -26,46 +26,40 @@ class TextInput(pygame.sprite.Sprite):
         
     def update(self, keyevent):
         self.keypress_cd_timer -= 1
-        key = keyevent.key
-        if key == pygame.K_RETURN:
-           self.clear()
-           return self.text
-        unicode = keyevent.unicode
-        if self.keypress_cd_timer <= 0:
-            if key > 31 and key < 127 and (
-                    self.maxLength == 0 or len(self.text) < self.maxLength):  # only printable characters
-                if keyevent.mod in (1, 2) and self.case == 1 and key >= 97 and key <= 122:
-                    # force lowercase letters
-                    self.text += chr(key)
-                elif keyevent.mod == 0 and self.case == 2 and key >= 97 and key <= 122:
-                    self.text += chr(key - 32)
-                else:
-                    # use the unicode char
-                    self.text += unicode
-
-            elif key == 8:
-                # backspace. repeat until clear
-                keys = pygame.key.get_pressed()
-                nexttime = pygame.time.get_ticks() + 200
-                deleting = True
-                while deleting:
-                    keys = pygame.key.get_pressed()
-                    if keys[pygame.K_BACKSPACE]:
-                        thistime = pygame.time.get_ticks()
-                        if thistime > nexttime:
-                            self.text = self.text[0:len(self.text) - 1]
-                            nexttime = thistime + 50
-                            pygame.event.clear()
+        if(keyevent):
+            key = keyevent.key
+            if key == pygame.K_RETURN:
+               self.clear()
+               return self.text
+            unicode = keyevent.unicode
+            if self.keypress_cd_timer <= 0:
+                if key > 31 and key < 127 and (
+                        self.maxLength == 0 or len(self.text) < self.maxLength):  # only printable characters
+                    if keyevent.mod in (1, 2) and self.case == 1 and key >= 97 and key <= 122:
+                        # force lowercase letters
+                        self.text += chr(key)
+                    elif keyevent.mod == 0 and self.case == 2 and key >= 97 and key <= 122:
+                        self.text += chr(key - 32)
                     else:
-                        deleting = False
-            self.keypress_cd_timer = self.keypress_cd_time
-                    
+                        # use the unicode char
+                        self.text += unicode
 
-    def move(self, xpos, ypos, centre=False):
-        if centre:
-            self.rect.topleft = [xpos, ypos]
-        else:
-            self.rect.center = [xpos, ypos]
+                elif key == 8:
+                    # backspace. repeat until clear
+                    keys = pygame.key.get_pressed()
+                    nexttime = pygame.time.get_ticks() + 200
+                    deleting = True
+                    while deleting:
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_BACKSPACE]:
+                            thistime = pygame.time.get_ticks()
+                            if thistime > nexttime:
+                                self.text = self.text[0:len(self.text) - 1]
+                                nexttime = thistime + 50
+                                pygame.event.clear()
+                        else:
+                            deleting = False
+                self.keypress_cd_timer = self.keypress_cd_time
 
     def clear(self):
         self.image.fill((255, 255, 255))
