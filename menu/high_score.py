@@ -25,7 +25,7 @@ class High_Score:
        
     def save_score(self,name,score):
         # adiciona o score na lista
-        self.player_scores.append({"score":score,"name":name})
+        self.player_scores.append({"score":score,"nome":name})
         self.sort_score()
         # limpa o arquivo de score
         open(highscore_file_name, "w").close()
@@ -48,4 +48,4 @@ class High_Score:
         pass
         
     def draw(self, screen):
-        screen.blit(self.hd_bg, (0,0))                                                                
+        screen.blit(self.hd_bg, (0,0))

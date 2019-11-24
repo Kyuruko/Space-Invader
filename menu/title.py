@@ -3,6 +3,8 @@ import pygame
 class Title:
     def __init__(self):
         self.bg = pygame.image.load('imgs/menu-bg.png').convert_alpha()
+        self.menu_music = pygame.mixer.music.load("sounds/Title-Screen.mp3")
+        pygame.mixer.music.play(-1)
       
         #"novo jogo"
         self.newgame1 = pygame.image.load('imgs/menu-novo1.png')

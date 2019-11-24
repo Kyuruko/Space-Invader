@@ -7,6 +7,10 @@ from menu.hud import HUD
 
 class Game:
     def __init__(self):
+        pygame.mixer.music.stop()
+        pygame.mixer.music.load("sounds/game.mp3")
+        pygame.mixer.music.play(-1, 0.0)
+
         self.bg = pygame.image.load('imgs/game-bg.png')
         # variavel que determina a velocidade de tiro
         self.bullet_cd_timer = 0
@@ -18,6 +22,9 @@ class Game:
         self.enemy = Enemies()
         self.hud = HUD()
 
+        self.bullet_sound = pygame.mixer.Sound("sounds/shoot.wav")
+
+
     # funçao que determina o intervalo entre um tiro e outro
     def fire(self):
         if self.bullet_cd_timer <= 0:
@@ -28,6 +35,8 @@ class Game:
     def update(self, keys):
         self.bullet_cd_timer -= 1
         if keys[pygame.K_SPACE]:
+            self.bullet_sound.play()
+            self.bullet_sound.set_volume(0.1)
             self.fire()
 
         # atualiza na tela os objetos
