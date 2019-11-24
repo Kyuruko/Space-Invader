@@ -11,9 +11,7 @@ pygame.init()
 #configuraçao da tela
 size = 800,600
 screen = pygame.display.set_mode(size)
-pygame.display.set_caption("Space Invader")
 icon = pygame.image.load('imgs/ufo.png')
-bg = pygame.image.load('imgs/game-bg.png')
 pygame.display.set_icon(icon)
 
 
@@ -28,8 +26,13 @@ nextscene = "title"
 
 run = True
 keypress = None
+
+timer=0
+delay=100
+
 # game loop
 while run:
+    timer -=1
     for event in pygame.event.get():
         # fecha a janela
         if event.type == pygame.QUIT:
@@ -50,13 +53,14 @@ while run:
         # print(nextscene)
         scene = scenes[nextscene]()
         nextscene = False
-
+        timer=delay
+    
     # pressionar tecla, permite várias teclas serem apertadas simultaneamente
     keys = pygame.key.get_pressed()
-
-    # atualiza a img em cada frame
-    nextscene = scene.update(keys,keypress)
-
+    if timer <=0:
+        # atualiza a img em cada frame
+        nextscene = scene.update(keys,keypress)
+        timer = 0
     # limpa tela
     screen.fill(BLACK)
 

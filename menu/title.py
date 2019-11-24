@@ -20,7 +20,7 @@ class Title:
         self.timer=10
         self.delay=5
         
-        self.selected = 0
+        self.selected = 4
         
         # o que deve ser chamado em cada posiçao
         self.actions=["game","show-score","exit"]
