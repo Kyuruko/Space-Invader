@@ -23,8 +23,8 @@ class Title:
         self.selected = 0
         
         # o que deve ser chamado em cada posiçao
-        self.actions=["game","high-score","exit"]
-    def update(self,keys):
+        self.actions=["game","show-score","exit"]
+    def update(self,keys,keypress):
         if self.selected < 0: 
             self.selected = 2
         if self.selected > 2:

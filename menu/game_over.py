@@ -5,7 +5,7 @@ class Game_Over:
         self.bg = pygame.image.load('imgs/game-over.png').convert_alpha()
 
     # funcao que reseta a tela de GO, para o menu principal
-    def update(self, keys):
+    def update(self, keys,keypress):
         if keys[pygame.K_r]:
             return "title"
 

@@ -2,7 +2,7 @@ import pygame
 from menu.title import Title
 from game.game import Game
 from menu.game_over import Game_Over
-from menu.high_score import High_Score
+from menu.addscore import AddScore
 from cores import BLACK
 import os
 
@@ -22,11 +22,13 @@ scenes = {
     'title': Title,
     'game': Game,
     'game-over': Game_Over,
-    'high-score': High_Score
+    'add-score': AddScore,
+    'show-score': AddScore
 }
 nextscene = "title"
 
 run = True
+keypress = None
 # game loop
 while run:
     for event in pygame.event.get():
@@ -34,6 +36,9 @@ while run:
         if event.type == pygame.QUIT:
             run = False
             break
+        elif event.type == pygame.KEYDOWN:
+            keypress = event
+    pygame.event.clear()
 
     # permite várias telas (main menu, game, highscore screen, etc)
     if nextscene:
@@ -49,7 +54,7 @@ while run:
     keys = pygame.key.get_pressed()
 
     # atualiza a img em cada frame
-    nextscene = scene.update(keys)
+    nextscene = scene.update(keys,keypress)
 
     # limpa tela
     screen.fill(BLACK)
