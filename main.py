@@ -2,7 +2,7 @@ import pygame
 from menu.title import Title
 from game.game import Game
 from menu.game_over import Game_Over
-from menu.addscore import AddScore
+from menu.showscore import ShowScore
 from cores import BLACK
 import os
 
@@ -22,8 +22,7 @@ scenes = {
     'title': Title,
     'game': Game,
     'game-over': Game_Over,
-    'add-score': AddScore,
-    'show-score': AddScore
+    'show-score': ShowScore
 }
 nextscene = "title"
 

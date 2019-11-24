@@ -22,7 +22,7 @@ class TextInput(pygame.sprite.Sprite):
         self.image.blit(newSurface, [10, 5])
         
         self.keypress_cd_timer = 0
-        self.keypress_cd_time = 80
+        self.keypress_cd_time = 60
         
     def update(self, keyevent):
         self.keypress_cd_timer -= 1
@@ -70,6 +70,6 @@ class TextInput(pygame.sprite.Sprite):
     def draw(self,screen):
         self.image.fill((255, 255, 255))
         pygame.draw.rect(self.image, (0, 0, 0), [0, 0, self.width - 1, self.boxSize - 1], 2)
-        newSurface = self.font.render(self.text, True, self.fontColour)
+        newSurface = self.font.render(self.text or self.initialText, True, self.fontColour)
         self.image.blit(newSurface, [10, 5])
         screen.blit(self.image,self.rect.topleft)
